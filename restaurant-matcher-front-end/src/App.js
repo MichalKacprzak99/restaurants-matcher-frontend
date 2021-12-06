@@ -1,6 +1,6 @@
 import './App.css';
 import {Link, Route, Routes} from "react-router-dom";
-import {HomePage, PeoplePage, CuisinePage, RestaurantPage} from './pages';
+import {HomePage, PeoplePage, CuisinePage, RestaurantPage, FriendshipPage} from './pages';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,7 +14,7 @@ const App = () => {
   const appBarLinks = [
     {to: "restaurants", name: "Restaurants", element: <RestaurantPage/>},
     {to: "people", name: "People", element: <PeoplePage/>},
-    {to: "friends", name: "Friends", element: <HomePage/>},
+    {to: "friendships", name: "Friendships", element: <FriendshipPage/>},
     {to: "cuisines", name: "Cuisines", element: <CuisinePage/>},
   ]
 
