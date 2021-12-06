@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 
 
 const RestaurantCard = ({restaurant, setRestaurants}) => {
-
+  console.log(restaurant)
   let {name, owner, cuisine, ratings} = restaurant
   const [restaurantRatings, addRating] = useState(ratings)
   const {handleSubmit, register} = useForm({});
@@ -62,13 +62,12 @@ const RestaurantCard = ({restaurant, setRestaurants}) => {
   }, [restaurantRatings])
 
   return (
-    <Card>
+    <Card sx={3} >
       <CardContent>
         <Grid
           container
           direction="column"
           spacing={3}
-
         >
           <Grid item>
             <Typography>
@@ -84,7 +83,7 @@ const RestaurantCard = ({restaurant, setRestaurants}) => {
               Cuisine Name: {cuisine.name}
             </Typography>
             <Typography>
-              Rating: {ratings ? `${averageRating.toFixed(2)} / 10` : "Not enough data"}
+              Rating: {restaurantRatings.length ? `${averageRating.toFixed(2)} / 10` : "Not enough data"}
             </Typography>
           </Grid>
           <Grid item container direction="column">
@@ -117,7 +116,7 @@ const RestaurantCard = ({restaurant, setRestaurants}) => {
                 </Grid>
                 <Grid item xs={4}>
                   <CardActions>
-                    <Button variant="contained" type={"submit"} size="small" color="success">Rate</Button>
+                    <Button variant="contained" type={"submit"} size="small" >Rate</Button>
                   </CardActions>
                 </Grid>
               </Grid>

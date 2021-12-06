@@ -32,16 +32,17 @@ const CuisineCard = ({cuisine, setCuisines}) => {
         <Grid
           container
           direction="row"
-          justifyContent={"space-between"}
+          justifyContent="space-between"
+          alignItems="center"
         >
-          <Grid>
+          <Grid item>
             < Typography>
               Name: {name}
             </Typography>
           </Grid>
-          <Grid>
+          <Grid item>
             <CardActions>
-              <Button size="small" onClick={deletePerson}>Delete</Button>
+              <Button variant="contained" size="small" onClick={deletePerson} color="error">Delete</Button>
             </CardActions>
           </Grid>
         </Grid>

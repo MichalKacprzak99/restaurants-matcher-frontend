@@ -34,21 +34,28 @@ const RestaurantPage = () => {
     <Grid
       container
       direction="column"
-      justifyContent="center"
+      justifyContent="space-evenly"
       alignItems="center"
       spacing={4}
     >
-      {restaurants.map((restaurant, index) => {
-        return (
+      <Grid
+        item
+        container
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="center"
+      >
+        {restaurants.map((restaurant, index) => {
+          return (
+            <Grid item key={index}>
+              <RestaurantCard restaurant={restaurant} setRestaurants={setRestaurants}/>
+            </Grid>
+          )
+        })}
+      </Grid>
 
-
-          <Grid item key={index}>
-            <RestaurantCard  restaurant={restaurant} setRestaurants={setRestaurants}/>
-          </Grid>
-        )
-      })}
       <Grid item>
-        <Button variant="contained" onClick={() => setOpen(true)}>
+        <Button variant="contained" color="success" onClick={() => setOpen(true)}>
           Add new restaurant
         </Button>
       </Grid>

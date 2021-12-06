@@ -51,9 +51,8 @@ const RestaurantPopUpAddingForm = ({open, setOpen, setRestaurants}) => {
   const handleAdd = (data) => {
     axios.post(`restaurant/`, data)
       .then(res => {
-
         if (res.status === 201) {
-          setRestaurants(restaurants => [...restaurants, data]);
+          setRestaurants(restaurants => [...restaurants, res.data]);
           handleClose()
         }
       })

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid'
 import axios from "../../axios.config";
-import {PersonPopUpAddingForm, PersonCard} from "./components";
+import {PersonCard, PersonPopUpAddingForm} from "./components";
 
 const PeoplePage = () => {
   const [persons, setPersons] = useState([])
@@ -30,17 +30,31 @@ const PeoplePage = () => {
     <Grid
       container
       direction="column"
-      justifyContent="center"
+      justifyContent="space-evenly"
       alignItems="center"
+      spacing={4}
     >
-      {persons.map((person, index) => {
-        return (
-          <PersonCard key={index} person={person} setPersons={setPersons}/>
+      <Grid
+        item
+        container
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="center"
+      >
+        {persons.map((person, index) => {
+          return (
+            <Grid key={index} item>
+              <PersonCard person={person} setPersons={setPersons}/>
+            </Grid>
           )
-      })}
-      <Button onClick={() => setOpen(true)}>
-        Add new person
-      </Button>
+        })}
+      </Grid>
+      <Grid item>
+        <Button variant="contained" color="success" onClick={() => setOpen(true)}>
+          Add new person
+        </Button>
+      </Grid>
+
       <PersonPopUpAddingForm open={open} setOpen={setOpen} setPersons={setPersons}/>
 
     </Grid>

@@ -29,18 +29,32 @@ const CuisinePage = () => {
   return (
     <Grid
       container
-      direction="column"
-      justifyContent="center"
+      direction="row"
+      justifyContent="space-evenly"
       alignItems="center"
+      spacing={4}
     >
-      {cuisines.map((cuisine, index) => {
-        return (
-          <CuisineCard key={index} cuisine={cuisine} setCuisines={setCuisines}/>
+      <Grid
+        item
+        container
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="center"
+      >
+        {cuisines.map((cuisine, index) => {
+          return (
+            <Grid key={index}>
+              <CuisineCard cuisine={cuisine} setCuisines={setCuisines}/>
+            </Grid>
           )
-      })}
-      <Button onClick={() => setOpen(true)}>
-        Add new cuisine
-      </Button>
+        })}
+      </Grid>
+      <Grid item >
+        <Button variant="contained" color="success" onClick={() => setOpen(true)}>
+          Add new cuisine
+        </Button>
+      </Grid>
+
       <CuisinePopUpAddingForm open={open} setOpen={setOpen} setCuisines={setCuisines}/>
 
     </Grid>
