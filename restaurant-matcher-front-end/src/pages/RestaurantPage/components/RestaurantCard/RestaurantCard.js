@@ -10,7 +10,6 @@ import Button from "@mui/material/Button";
 
 
 const RestaurantCard = ({restaurant, setRestaurants}) => {
-  console.log(restaurant)
   let {name, owner, cuisine, ratings} = restaurant
   const [restaurantRatings, addRating] = useState(ratings)
   const {handleSubmit, register} = useForm({});
@@ -38,7 +37,6 @@ const RestaurantCard = ({restaurant, setRestaurants}) => {
   }
 
   const rateRestaurant = (rateData) => {
-    console.log(rateData)
     axios.post(`restaurant/rate/?restaurant_name=${name}`, rateData)
       .then(res => {
         if (res.status === 200) {

@@ -26,10 +26,6 @@ const RestaurantPage = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <Grid
       container
