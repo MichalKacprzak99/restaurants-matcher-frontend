@@ -10,8 +10,8 @@ import Typography from '@mui/material/Typography';
 
 
 const App = () => {
-  // TODO change elements
   const appBarLinks = [
+    {to: "/", name: "Home", element: <HomePage/>},
     {to: "restaurants", name: "Restaurants", element: <RestaurantPage/>},
     {to: "people", name: "People", element: <PeoplePage/>},
     {to: "friendships", name: "Friendships", element: <FriendshipPage/>},
@@ -37,7 +37,6 @@ const App = () => {
 
 
       <Routes>
-        <Route exact path='/' element={<HomePage/>}/>
         {appBarLinks.map((link, index) => {
           const {to, element} = link
           return (
