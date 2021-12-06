@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid'
 import axios from "../../axios.config";
-import {RestaurantPopUpAddingForm, RestaurantCard} from "./components";
+import {RestaurantCard, RestaurantPopUpAddingForm} from "./components";
 
 const RestaurantPage = () => {
   const [restaurants, setRestaurants] = useState([])
@@ -12,7 +12,6 @@ const RestaurantPage = () => {
     axios.get(`restaurant/`)
       .then(res => {
         if (res.status === 200) {
-          console.log(res.data)
           setRestaurants(res.data)
         }
       })
@@ -27,21 +26,33 @@ const RestaurantPage = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <Grid
       container
       direction="column"
       justifyContent="center"
       alignItems="center"
+      spacing={4}
     >
       {restaurants.map((restaurant, index) => {
         return (
-          <RestaurantCard key={index} restaurant={restaurant} setRestaurants={setRestaurants}/>
-          )
+
+
+          <Grid item key={index}>
+            <RestaurantCard  restaurant={restaurant} setRestaurants={setRestaurants}/>
+          </Grid>
+        )
       })}
-      <Button onClick={() => setOpen(true)}>
-        Add new restaurant
-      </Button>
+      <Grid item>
+        <Button variant="contained" onClick={() => setOpen(true)}>
+          Add new restaurant
+        </Button>
+      </Grid>
+
       <RestaurantPopUpAddingForm open={open} setOpen={setOpen} setRestaurants={setRestaurants}/>
 
     </Grid>
