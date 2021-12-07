@@ -117,7 +117,7 @@ const HomePage = () => {
               <TextField
                 select
                 fullWidth
-                label="Select"
+                label="First Person"
                 defaultValue=''
                 inputProps={register('firstPersonName', {
                   required: 'Please set first person',
@@ -134,7 +134,7 @@ const HomePage = () => {
               <TextField
                 select
                 fullWidth
-                label="Select"
+                label="Second Person"
                 defaultValue=''
                 inputProps={register('secondPersonName', {
                   required: 'Please set second person',
@@ -158,14 +158,15 @@ const HomePage = () => {
         {searching ?
           <CircularProgress/>
           :
-          matchedRestaurant != null && matchedRestaurant !== {} ?
+          matchedRestaurant != null ?
+            matchedRestaurant !== {} ?
             renderMatchedRestaurant(matchedRestaurant)
             :
             <Grid item>
               <Typography variant="h4" gutterBottom component="div">
                 Could not find any matching restaurant
               </Typography>
-            </Grid>
+            </Grid> : <></>
         }
     </Grid>
 
