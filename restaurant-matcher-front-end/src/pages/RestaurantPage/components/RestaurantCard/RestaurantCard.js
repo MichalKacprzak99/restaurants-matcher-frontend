@@ -109,7 +109,7 @@ const RestaurantCard = ({restaurant, setRestaurants}) => {
                       required: 'rating',
                     })}
                   >
-                    {[...Array(10).keys()].map(rate => {
+                    {[...Array(11).keys()].map(rate => {
                       return (
                         <MenuItem key={rate} value={rate}>
                           {rate}
