@@ -7,30 +7,31 @@ import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import CircularProgress from "@mui/material/CircularProgress";
+import CardContent from "@mui/material/CardContent";
+import Card from "@mui/material/Card";
 
 const HomePage = () => {
 
   const [persons, setPersons] = useState([])
   const [matchedRestaurant, setMatchedRestaurant] = useState(null)
   const [searching, setSearching] = useState(false)
-  const {handleSubmit, register} = useForm({});
+  const {handleSubmit, register} = useForm();
 
   const matchRestaurant = (data) => {
     setMatchedRestaurant(null)
     setSearching(true)
-
-    // setMatchedRestaurant("Test")
-    // axios.post(`restaurant/match`, data)
-    //   .then(res => {
-    //     if (res.status === 200) {
-    //       console.log(res.data)
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     if (error.response) {
-    //       console.error(error.response.data); // => the response payload
-    //     }
-    //   });
+    axios.get(`restaurant/match?first_person_name=${data.firstPersonName}&second_person_name=${data.secondPersonName}`)
+      .then(res => {
+        if (res.status === 200) {
+          setSearching(false)
+          res.data ? setMatchedRestaurant(res.data) : setMatchedRestaurant({})
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.error(error.response.data); // => the response payload
+        }
+      });
   }
 
   const fetchPersons = () => {
@@ -48,29 +49,46 @@ const HomePage = () => {
   }
 
   const renderMatchedRestaurant = (restaurant) => {
-    const {name, owner, cuisine, ratings} = restaurant
+    const {name, owner, cuisine, ratings, city, country} = restaurant
     const rating = ratings.length ?
       `${(ratings.reduce((p, c) => p + c, 0) / ratings.length).toFixed(2)} / 10`
       :
       "Not enough data"
     return (
-      <Grid item>
-        <Typography>
-          Name: {name}
-        </Typography>
-        <Typography>
-          Owner name: {owner.name}
-        </Typography>
-        <Typography>
-          Owner phone: {owner.phone}
-        </Typography>
-        <Typography>
-          Cuisine Name: {cuisine.name}
-        </Typography>
-        <Typography>
-          Rating: {rating}
-        </Typography>
-      </Grid>
+      <Card sx={3}>
+        <CardContent>
+          <Grid
+            item
+            container
+            direction="column"
+            spacing={3}
+          >
+            <Grid item>
+              <Typography>
+                Name: {name}
+              </Typography>
+              <Typography>
+                Owner name: {owner.name}
+              </Typography>
+              <Typography>
+                Owner phone: {owner.phone}
+              </Typography>
+              <Typography>
+                Cuisine: {cuisine.name}
+              </Typography>
+              <Typography>
+                City: {city}
+              </Typography>
+              <Typography>
+                Country: {country}
+              </Typography>
+              <Typography>
+                Rating: {rating}
+              </Typography>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
     )
   }
 
@@ -101,12 +119,12 @@ const HomePage = () => {
                 fullWidth
                 label="Select"
                 defaultValue=''
-                inputProps={register('firstPerson', {
+                inputProps={register('firstPersonName', {
                   required: 'Please set first person',
                 })}
               >
                 {persons.map((person, index) => (
-                  <MenuItem key={index} value={person}>
+                  <MenuItem key={index} value={person.name}>
                     {person.name}
                   </MenuItem>
                 ))}
@@ -118,12 +136,12 @@ const HomePage = () => {
                 fullWidth
                 label="Select"
                 defaultValue=''
-                inputProps={register('secondPerson', {
+                inputProps={register('secondPersonName', {
                   required: 'Please set second person',
                 })}
               >
                 {persons.map((person, index) => (
-                  <MenuItem key={index} value={person}>
+                  <MenuItem key={index} value={person.name}>
                     {person.name}
                   </MenuItem>
                 ))}
@@ -137,9 +155,18 @@ const HomePage = () => {
           </Grid>
         </Grid>
       </form>
-      <Typography variant="h1" component="div" gutterBottom>
-        {searching ? <CircularProgress/> : matchedRestaurant && renderMatchedRestaurant(matchedRestaurant)}
-      </Typography>
+        {searching ?
+          <CircularProgress/>
+          :
+          matchedRestaurant != null && matchedRestaurant !== {} ?
+            renderMatchedRestaurant(matchedRestaurant)
+            :
+            <Grid item>
+              <Typography variant="h4" gutterBottom component="div">
+                Could not find any matching restaurant
+              </Typography>
+            </Grid>
+        }
     </Grid>
 
   );
