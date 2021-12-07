@@ -79,6 +79,21 @@ const PersonPopUpAddingForm = ({open, setOpen, setPersons}) => {
               name="city"
               control={control}
             />
+            <Controller
+              render={({field}) => (
+                <TextField
+                  {...field}
+                  fullWidth
+                  label="Country"
+                  required
+                  onChange={(e) => field.onChange(e)}
+                  value={field.value}
+                  type={"text"}
+                />
+              )}
+              name="country"
+              control={control}
+            />
 
             <DialogActions>
               <Button onClick={() => handleClose()} color="primary">

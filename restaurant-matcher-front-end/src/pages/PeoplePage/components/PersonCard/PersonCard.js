@@ -10,7 +10,7 @@ import axios from "../../../../axios.config";
 
 const PersonCard = ({person, setPersons}) => {
 
-  const {name, phone, city} = person
+  const {name, phone, city, country} = person
 
   const deletePerson = () => {
     axios.delete(`person/?person_name=${name}`)
@@ -44,6 +44,9 @@ const PersonCard = ({person, setPersons}) => {
             </Typography>
             <Typography>
               City: {city}
+            </Typography>
+            <Typography>
+              Country: {country}
             </Typography>
           </Grid>
           <Grid item>
