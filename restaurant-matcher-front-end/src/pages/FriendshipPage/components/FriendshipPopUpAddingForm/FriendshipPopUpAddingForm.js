@@ -60,7 +60,7 @@ const FriendshipPopUpAddingForm = ({open, setOpen, setFriendship}) => {
           <TextField
             select
             fullWidth
-            label="Select"
+            label="First person"
             defaultValue=''
             inputProps={register('firstPerson', {
               required: 'Please set first person',
@@ -75,7 +75,7 @@ const FriendshipPopUpAddingForm = ({open, setOpen, setFriendship}) => {
           <TextField
             select
             fullWidth
-            label="Select"
+            label="Second person"
             defaultValue=''
             inputProps={register('secondPerson', {
               required: 'Please set second person',
