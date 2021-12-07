@@ -83,9 +83,28 @@ const RestaurantPopUpAddingForm = ({open, setOpen, setRestaurants}) => {
             })}
           />
           <TextField
+            fullWidth
+            label="City"
+            required
+            type={"text"}
+            inputProps={register('city', {
+              required: 'Please set city',
+            })}
+          />
+          <TextField
+            fullWidth
+            label="Country"
+            required
+            type={"text"}
+            inputProps={register('country', {
+              required: 'Please set country',
+            })}
+          />
+
+          <TextField
             select
             fullWidth
-            label="Select"
+            label="Owner"
             defaultValue=''
             inputProps={register('owner', {
               required: 'Please set owner',
@@ -100,7 +119,7 @@ const RestaurantPopUpAddingForm = ({open, setOpen, setRestaurants}) => {
           <TextField
             select
             fullWidth
-            label="Select"
+            label="Cuisine"
             defaultValue=''
             inputProps={register('cuisine', {
               required: 'Please set cuisine',
