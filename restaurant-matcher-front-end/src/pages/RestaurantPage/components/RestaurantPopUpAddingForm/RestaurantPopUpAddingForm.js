@@ -131,7 +131,7 @@ const RestaurantPopUpAddingForm = ({open, setOpen, setRestaurants}) => {
               </MenuItem>
             ))}
           </TextField>
-          <DialogActions>
+          <DialogActions sx={{justifyContent: "center"}}>
             <Button onClick={() => handleClose()} color="primary">
               Cancel
             </Button>

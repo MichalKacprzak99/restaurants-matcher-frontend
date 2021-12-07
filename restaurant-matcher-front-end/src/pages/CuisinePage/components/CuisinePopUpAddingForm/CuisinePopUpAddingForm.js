@@ -49,7 +49,7 @@ const CuisinePopUpAddingForm = ({open, setOpen, setCuisines}) => {
               name="name"
               control={control}
             />
-            <DialogActions>
+            <DialogActions sx={{justifyContent: "center"}}>
               <Button onClick={() => handleClose()} color="primary">
                 Cancel
               </Button>

@@ -95,7 +95,7 @@ const PersonPopUpAddingForm = ({open, setOpen, setPersons}) => {
               control={control}
             />
 
-            <DialogActions>
+            <DialogActions sx={{justifyContent: "center"}}>
               <Button onClick={() => handleClose()} color="primary">
                 Cancel
               </Button>
