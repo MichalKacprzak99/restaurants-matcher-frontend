@@ -33,6 +33,7 @@ const PeoplePage = () => {
       justifyContent="space-evenly"
       alignItems="center"
       spacing={4}
+      paddingTop={5}
     >
       <Grid
         item

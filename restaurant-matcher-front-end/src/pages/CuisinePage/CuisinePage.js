@@ -33,6 +33,7 @@ const CuisinePage = () => {
       justifyContent="space-evenly"
       alignItems="center"
       spacing={4}
+      paddingTop={5}
     >
       <Grid
         item
@@ -49,7 +50,7 @@ const CuisinePage = () => {
           )
         })}
       </Grid>
-      <Grid item >
+      <Grid item>
         <Button variant="contained" color="success" onClick={() => setOpen(true)}>
           Add new cuisine
         </Button>
