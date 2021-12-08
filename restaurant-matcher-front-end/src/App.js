@@ -11,11 +11,11 @@ import Typography from '@mui/material/Typography';
 
 const App = () => {
   const appBarLinks = [
-    {to: "/", name: "Home", element: <HomePage/>},
-    {to: "/restaurants", name: "Restaurants", element: <RestaurantPage/>},
-    {to: "/people", name: "People", element: <PeoplePage/>},
-    {to: "/friendships", name: "Friendships", element: <FriendshipPage/>},
-    {to: "/cuisines", name: "Cuisines", element: <CuisinePage/>},
+    {to: "", name: "Home", element: <HomePage/>},
+    {to: "restaurants", name: "Restaurants", element: <RestaurantPage/>},
+    {to: "people", name: "People", element: <PeoplePage/>},
+    {to: "friendships", name: "Friendships", element: <FriendshipPage/>},
+    {to: "cuisines", name: "Cuisines", element: <CuisinePage/>},
   ]
 
   return (
@@ -27,7 +27,7 @@ const App = () => {
               const {to, name} = link
               return (
                 <Typography key={index} variant="h6" component="div" sx={{flexGrow: 1}}>
-                  <Link to={to} style={{textDecoration: 'none'}}>{name}</Link>
+                  <Link to={`restaurants-matcher-frontend/${to}`} style={{textDecoration: 'none'}}>{name}</Link>
                 </Typography>
               )
             })}
@@ -40,9 +40,10 @@ const App = () => {
         {appBarLinks.map((link, index) => {
           const {to, element} = link
           return (
-            <Route key={index} exact path={to} element={element}/>
+            <Route key={index} path={`restaurants-matcher-frontend/${to}`} element={element}/>
           )
         })}
+
       </Routes>
     </>
   );
