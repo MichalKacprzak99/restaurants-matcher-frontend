@@ -12,10 +12,10 @@ import Typography from '@mui/material/Typography';
 const App = () => {
   const appBarLinks = [
     {to: "/", name: "Home", element: <HomePage/>},
-    {to: "restaurants", name: "Restaurants", element: <RestaurantPage/>},
-    {to: "people", name: "People", element: <PeoplePage/>},
-    {to: "friendships", name: "Friendships", element: <FriendshipPage/>},
-    {to: "cuisines", name: "Cuisines", element: <CuisinePage/>},
+    {to: "/restaurants", name: "Restaurants", element: <RestaurantPage/>},
+    {to: "/people", name: "People", element: <PeoplePage/>},
+    {to: "/friendships", name: "Friendships", element: <FriendshipPage/>},
+    {to: "/cuisines", name: "Cuisines", element: <CuisinePage/>},
   ]
 
   return (
